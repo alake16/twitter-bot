@@ -21,12 +21,11 @@ def tweetTemp():
 	line = os.popen(cmd).readline().strip()
 	tempC = line.split('=')[1].split("'")[0]
 	tempF = (float(tempC) * (9 / 5)) + 32
-
+	global i
 	tempTweet = "Update {}: Current CPU temperature: {} deg F".format(i, tempF)
 
 	#Using our newly created object, utilize the update_status to send in the text passed in through CMD
 	api.update_status(status=tempTweet)
-	global i
 	i += 1
 
 def job():
