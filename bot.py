@@ -15,9 +15,9 @@ api = Twython(CONSUMER_KEY,CONSUMER_SECRET,ACCESS_KEY,ACCESS_SECRET)
 cmd = '/opt/vc/bin/vcgencmd measure_temp'
 line = os.popen(cmd).readline().strip()
 tempC = line.split('=')[1].split("'")[0]
-tempF = (float(temp) * (9 / 5)) + 32
+tempF = (float(tempC) * (9 / 5)) + 32
 
 tempTweet = "Current CPU temperature: {} deg F".format(tempF)
 
 #Using our newly created object, utilize the update_status to send in the text passed in through CMD
-api.update_status(status=sys.argv[1])
+api.update_status(status=tempTweet)
