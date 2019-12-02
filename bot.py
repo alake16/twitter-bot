@@ -26,6 +26,7 @@ def tweetTemp():
 
 	#Using our newly created object, utilize the update_status to send in the text passed in through CMD
 	api.update_status(status=tempTweet)
+	global i
 	i += 1
 
 def job():
