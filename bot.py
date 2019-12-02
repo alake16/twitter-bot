@@ -5,6 +5,8 @@ import schedule
 import time
 from twython import Twython
 
+i = 0
+
 def tweetTemp():
 	#Define our constant variables, this is all the data we wrote down in the first part of the tutorial.
 	CONSUMER_KEY = 'SGEDNheidSGZOtRkPGg26aUAw'
@@ -20,10 +22,11 @@ def tweetTemp():
 	tempC = line.split('=')[1].split("'")[0]
 	tempF = (float(tempC) * (9 / 5)) + 32
 
-	tempTweet = "Current CPU temperature: {} deg F".format(tempF)
+	tempTweet = "Update {}: Current CPU temperature: {} deg F".format(i, tempF)
 
 	#Using our newly created object, utilize the update_status to send in the text passed in through CMD
 	api.update_status(status=tempTweet)
+	i += 1
 
 def job():
     tweetTemp()
